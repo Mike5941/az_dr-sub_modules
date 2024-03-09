@@ -1,9 +1,27 @@
-name: Deploy Main Region
+name: Terraform 배포
 
-on: push
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  :
+  terraform:
+    name: Terraform 실행
     runs-on: ubuntu-latest
     steps:
-      - name:
+      - uses: actions/checkout@v2
+
+      - name: Terraform 설치
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: "1.2.0"
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform plan
+        run: terraform plan
+
+      - name: Terraform apply
+        run: terraform apply
