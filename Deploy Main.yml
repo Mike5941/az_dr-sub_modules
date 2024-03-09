@@ -1,0 +1,9 @@
+name: Deploy Main Region
+
+on: push
+
+jobs:
+  :
+    runs-on: ubuntu-latest
+    steps:
+      - name:
