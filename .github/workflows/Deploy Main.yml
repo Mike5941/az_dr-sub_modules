@@ -33,7 +33,10 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ./primary/network
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
+        working-directory: ./primary/network
+
 
