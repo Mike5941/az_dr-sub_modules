@@ -22,9 +22,8 @@ jobs:
           az group list
           pwd
 
-      - uses: actions/checkout@v4
-        with:
-          ref: main
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
