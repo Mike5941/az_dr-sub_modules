@@ -33,7 +33,7 @@ jobs:
 
       - name: Terraform Init and Apply
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          GITHUB_TOKEN: ${{ secrets.MY_PAT }}
         run: |
           terraform init
           terraform apply -auto-approve
