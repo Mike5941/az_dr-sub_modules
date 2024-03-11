@@ -1,4 +1,4 @@
-name: Run Azure Login with OpenID Connect
+name: Provisioning with Terraform after signing in to Azure
 on: [push]
 
 permissions:
