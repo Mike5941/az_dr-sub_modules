@@ -33,9 +33,7 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
-        working-directory: prod/network
 
       - name: Terraform Plan
         run: terraform plan -out=tfplan
-        working-directory: prod/network
 
