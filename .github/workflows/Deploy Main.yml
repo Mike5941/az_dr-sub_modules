@@ -32,7 +32,10 @@ jobs:
           terraform_version: latest
 
       - name: Terraform Init
-        run: terraform init prod/network
+        run: terraform init
+        working-directory: prod/network
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan prod/network
+        run: terraform plan -out=tfplan
+        working-directory: prod/network
+
