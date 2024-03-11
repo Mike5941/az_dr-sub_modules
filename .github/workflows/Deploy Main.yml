@@ -6,18 +6,33 @@ permissions:
       contents: read
 
 jobs:
-  build-and-deploy:
+  terraform:
     runs-on: ubuntu-latest
     steps:
-    - name: 'Az CLI login'
-      uses: azure/login@v1
-      with:
+      - name: 'Az CLI login'
+        uses: azure/login@v1
+        with:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-    - name: 'Run Azure CLI commands'
-      run: |
+      - name: 'Run Azure CLI commands'
+        run: |
           az account show
           az group list
           pwd
+
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: latest
+
+      - name: Terraform Init
+        run: terraform init prod/network
+
+      - name: Terraform Plan
+        run: terraform plan -out=tfplan prod/network
